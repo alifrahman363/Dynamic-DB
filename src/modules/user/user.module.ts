@@ -1,14 +1,15 @@
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm'; // Import this to connect the User entity with TypeORM
-import { UserService } from './user.service';
-import { UserController } from './user.controller';
-import { User } from './user.entity'; // Import the User entity
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { UserService } from './services/user.service';
+import { UserController } from './controllers/user.controller';
+import { User } from './entities/user.entity';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([User]), // Connect User entity to TypeORM
+    TypeOrmModule.forFeature([User]),
   ],
-  providers: [UserService], // Register the UserService
-  controllers: [UserController], // Register the UserController
+  providers: [UserService],
+  controllers: [UserController],
+  exports: [UserService],
 })
 export class UserModule { }
