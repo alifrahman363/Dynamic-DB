@@ -1,20 +1,22 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './modules/user/user.module';
+import { ProductModule } from './modules/product/product.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      type: 'mysql', // Define the database type
+      type: 'mysql',
       host: 'localhost',
       port: 3306,
       username: 'root',
       password: 'alif',
-      database: 'main_db', // Your main database where users are registered
+      database: 'main_db',
       autoLoadEntities: true,
-      synchronize: true, // Set to true during development
+      synchronize: true,
     }),
-    UserModule, // Add the UserModule here
+    UserModule,
+    ProductModule
   ],
 })
 export class AppModule { }
